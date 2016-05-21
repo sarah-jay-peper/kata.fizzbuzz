@@ -25,21 +25,21 @@ public class FizzBuzz {
     }
 
     public String transform() {
-        replaceFizz();
-        replaceBuzz();
-        replaceFaceValue();
+        addFizzIfDivisibleByThree();
+        addBuzzIfDivisibleByFive();
+        addFaceValueIfEmpty();
         return getResult();
     }
 
-    private void replaceFaceValue() {
+    private void addFaceValueIfEmpty() {
         if (result.isEmpty()) result = String.valueOf(number);
     }
 
-    private void replaceFizz() {
+    private void addFizzIfDivisibleByThree() {
         if (isDivisibleByThree(number)) result += "Fizz";
     }
 
-    private void replaceBuzz() {
+    private void addBuzzIfDivisibleByFive() {
         if (isDivisibleByFive(number)) result += "Buzz";
     }
 
