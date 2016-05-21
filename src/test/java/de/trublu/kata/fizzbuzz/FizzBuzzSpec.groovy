@@ -23,6 +23,7 @@ class FizzBuzzSpec extends Specification {
             "9, Fizz"      | 9      | "Fizz"
             "10, Buzz"     | 10     | "Buzz"
             "15, FizzBuzz" | 15     | "FizzBuzz"
+            "16"           | 16     | "16"
     }
 
     def "test output for values 1 to 100"() {

@@ -29,16 +29,22 @@ public class FizzBuzz {
     }
 
     private static String replaceFizz(int input, String result) {
-        if (input % 3 == 0) {
+        if (isDivisibleByThree(input)) {
             result += "Fizz";
         }
         return result;
     }
 
     private static String replaceBuzz(int input, String result) {
-        if (input % 5 == 0) {
+        if (isDivisibleByFive(input)) {
             result += "Buzz";
         }
         return result;
     }
+
+    private static boolean isDivisibleByFive(int input) {return isDivisibleBy(5, input);}
+
+    private static boolean isDivisibleByThree(int input) {return isDivisibleBy(3, input);}
+
+    private static boolean isDivisibleBy(int divisor, int input) {return input % divisor == 0;}
 }
