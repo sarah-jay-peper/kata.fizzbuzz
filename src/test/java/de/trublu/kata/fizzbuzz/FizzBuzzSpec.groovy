@@ -25,4 +25,30 @@ class FizzBuzzSpec extends Specification {
             "15, FizzBuzz" | 15     | "FizzBuzz"
     }
 
+    def "test output for values 1 to 100"() {
+        when: "get up to 100"
+            def result = FizzBuzz.print(20);
+        then:
+            result == """1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+16
+17
+Fizz
+19
+Buzz
+"""
+    }
 }
