@@ -2,7 +2,7 @@ package de.trublu.kata.fizzbuzz;
 
 public class FizzBuzz {
     public static String transform(Integer input) {
-        if (input == 3 ) {
+        if (input % 3 == 0 ) {
             return "Fizz";
         }
         if (input == 5 ) {
