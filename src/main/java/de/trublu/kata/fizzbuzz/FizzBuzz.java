@@ -22,24 +22,15 @@ public class FizzBuzz {
     }
 
     private static String replaceFaceValue(int input, String result) {
-        if (result.isEmpty()) {
-            result = String.valueOf(input);
-        }
-        return result;
+        return result.isEmpty() ? String.valueOf(input) : result;
     }
 
     private static String replaceFizz(int input, String result) {
-        if (isDivisibleByThree(input)) {
-            result += "Fizz";
-        }
-        return result;
+        return isDivisibleByThree(input) ? result + "Fizz" : result;
     }
 
     private static String replaceBuzz(int input, String result) {
-        if (isDivisibleByFive(input)) {
-            result += "Buzz";
-        }
-        return result;
+        return isDivisibleByFive(input) ? result + "Buzz" : result;
     }
 
     private static boolean isDivisibleByFive(int input) {return isDivisibleBy(5, input);}
