@@ -2,15 +2,16 @@ package de.trublu.kata.fizzbuzz;
 
 public class FizzBuzz {
     public static String transform(int input) {
-        if (input % 3 == 0 && input % 5 == 0) {
-            return "FizzBuzz";
-        }
+        String result = "";
         if (input % 3 == 0) {
-            return "Fizz";
+            result = "Fizz";
         }
         if (input % 5 == 0) {
-            return "Buzz";
+            result += "Buzz";
         }
-        return input + "";
+        if (result.isEmpty()) {
+            result = String.valueOf(input);
+        }
+        return result;
     }
 }
