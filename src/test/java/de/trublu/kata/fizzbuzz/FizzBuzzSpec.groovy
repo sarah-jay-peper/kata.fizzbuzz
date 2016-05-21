@@ -3,14 +3,12 @@ package de.trublu.kata.fizzbuzz
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import static de.trublu.kata.fizzbuzz.FizzBuzz.*
-
 class FizzBuzzSpec extends Specification {
 
     @Unroll
     def "test input #testName"() {
         when: "input"
-            def output = transform(number);
+            def output = new FizzBuzz(number).transform();
         then:
             output == expectedOutput
         where:

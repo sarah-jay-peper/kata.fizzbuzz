@@ -1,36 +1,46 @@
 package de.trublu.kata.fizzbuzz;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 import java.util.stream.IntStream;
 
+@Getter
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class FizzBuzz {
 
     private static final String NEWLINE = "\n";
 
+    private final int number;
+
+    private String result = "";
+
     public static String print(int max) {
         return IntStream.rangeClosed(1, max)
-                .mapToObj(FizzBuzz::transform)
+                .mapToObj(FizzBuzz::new)
+                .map(FizzBuzz::transform)
                 .reduce((result, current) -> result + NEWLINE + current)
                 .orElse("");
     }
 
-    public static String transform(int input) {
-        String result = "";
-        result = replaceFizz(input, result);
-        result = replaceBuzz(input, result);
-        result = replaceFaceValue(input, result);
-        return result;
+    public String transform() {
+        replaceFizz();
+        replaceBuzz();
+        replaceFaceValue();
+        return getResult();
     }
 
-    private static String replaceFaceValue(int input, String result) {
-        return result.isEmpty() ? String.valueOf(input) : result;
+    private void replaceFaceValue() {
+        result = result.isEmpty() ? String.valueOf(number) : result;
     }
 
-    private static String replaceFizz(int input, String result) {
-        return isDivisibleByThree(input) ? result + "Fizz" : result;
+    private void replaceFizz() {
+        result = isDivisibleByThree(number) ? result + "Fizz" : result;
     }
 
-    private static String replaceBuzz(int input, String result) {
-        return isDivisibleByFive(input) ? result + "Buzz" : result;
+    private void replaceBuzz() {
+        result = isDivisibleByFive(number) ? result + "Buzz" : result;
     }
 
     private static boolean isDivisibleByFive(int input) {return isDivisibleBy(5, input);}
