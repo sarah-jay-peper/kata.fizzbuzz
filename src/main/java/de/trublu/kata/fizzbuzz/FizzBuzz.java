@@ -1,13 +1,16 @@
 package de.trublu.kata.fizzbuzz;
 
+import java.util.stream.IntStream;
+
 public class FizzBuzz {
 
+    private static final String NEWLINE = "\n";
+
     public static String print(int max) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 1; i <= max; i++) {
-            builder.append(transform(i)).append("\n");
-        }
-        return builder.toString();
+        return IntStream.rangeClosed(1, max)
+                .mapToObj(FizzBuzz::transform)
+                .reduce((result, current) -> result + NEWLINE + current)
+                .orElse("");
     }
 
     public static String transform(int input) {

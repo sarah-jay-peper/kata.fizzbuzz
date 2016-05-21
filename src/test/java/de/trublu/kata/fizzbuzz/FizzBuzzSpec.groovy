@@ -48,7 +48,6 @@ FizzBuzz
 17
 Fizz
 19
-Buzz
-"""
+Buzz"""
     }
 }
