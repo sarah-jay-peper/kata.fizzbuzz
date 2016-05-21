@@ -32,15 +32,15 @@ public class FizzBuzz {
     }
 
     private void replaceFaceValue() {
-        result = result.isEmpty() ? String.valueOf(number) : result;
+        if (result.isEmpty()) result = String.valueOf(number);
     }
 
     private void replaceFizz() {
-        result = isDivisibleByThree(number) ? result + "Fizz" : result;
+        if (isDivisibleByThree(number)) result += "Fizz";
     }
 
     private void replaceBuzz() {
-        result = isDivisibleByFive(number) ? result + "Buzz" : result;
+        if (isDivisibleByFive(number)) result += "Buzz";
     }
 
     private static boolean isDivisibleByFive(int input) {return isDivisibleBy(5, input);}
