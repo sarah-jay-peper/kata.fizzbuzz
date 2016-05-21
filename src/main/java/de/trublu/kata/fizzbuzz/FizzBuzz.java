@@ -1,13 +1,13 @@
 package de.trublu.kata.fizzbuzz;
 
 public class FizzBuzz {
-    public static String transform(Integer input) {
-        if (input % 3 == 0 ) {
+    public static String transform(int input) {
+        if (input % 3 == 0) {
             return "Fizz";
         }
-        if (input == 5 ) {
+        if (input % 5 == 0) {
             return "Buzz";
         }
-        return input.toString();
+        return input + "";
     }
 }

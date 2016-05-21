@@ -14,13 +14,14 @@ class FizzBuzzSpec extends Specification {
         then:
             output == expectedOutput
         where:
-            testName  | number | expectedOutput
-            "1"       | 1      | "1"
-            "2"       | 2      | "2"
-            "3, Fizz" | 3      | "Fizz"
-            "5, Buzz" | 5      | "Buzz"
-            "6, Fizz" | 6      | "Fizz"
-            "9, Fizz" | 9      | "Fizz"
+            testName   | number | expectedOutput
+            "1"        | 1      | "1"
+            "2"        | 2      | "2"
+            "3, Fizz"  | 3      | "Fizz"
+            "5, Buzz"  | 5      | "Buzz"
+            "6, Fizz"  | 6      | "Fizz"
+            "9, Fizz"  | 9      | "Fizz"
+            "10, Buzz" | 10     | "Buzz"
     }
 
 }
