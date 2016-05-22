@@ -20,7 +20,7 @@ public class FizzBuzz {
         return IntStream.rangeClosed(1, max)
                 .mapToObj(FizzBuzz::new)
                 .map(FizzBuzz::transform)
-                .reduce((result, current) -> result + NEWLINE + current)
+                .reduce(FizzBuzz::reduceOutput)
                 .orElse("");
     }
 
@@ -30,6 +30,8 @@ public class FizzBuzz {
         addFaceValueIfEmpty();
         return getResult();
     }
+
+    private static String reduceOutput(String result, String current) {return result + NEWLINE + current;}
 
     private void addFaceValueIfEmpty() {
         if (result.isEmpty()) result = String.valueOf(number);
