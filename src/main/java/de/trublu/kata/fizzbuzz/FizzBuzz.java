@@ -5,19 +5,19 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.stream.IntStream;
 
-public class FizzBuzz {
+public final class FizzBuzz {
 
     private static final String NEWLINE = "\n";
 
-    public static String print(int max) {
+    public String print(int max) {
         return IntStream.rangeClosed(1, max)
                 .mapToObj(FizzBuzzNumber::new)
-                .map(FizzBuzz::transform)
+                .map(this::transform)
                 .reduce(FizzBuzz::reduceOutput)
                 .orElse("");
     }
 
-    public static String transform(FizzBuzzNumber number) {
+    public String transform(FizzBuzzNumber number) {
         return number.addFizzIfDivisibleByThreeOrContainsThree()
                 .addBuzzIfDivisibleByFiveOrContainsFive()
                 .addFaceValueIfEmpty()

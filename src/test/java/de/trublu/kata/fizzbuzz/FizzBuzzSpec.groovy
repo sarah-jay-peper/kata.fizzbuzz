@@ -10,7 +10,7 @@ class FizzBuzzSpec extends Specification {
         given: "a FizzBuzz number"
             def fizzBuzzNumber = new FizzBuzzNumber(number);
         when: "input"
-            def output = FizzBuzz.transform(fizzBuzzNumber);
+            def output = new FizzBuzz().transform(fizzBuzzNumber);
         then:
             output == expectedOutput
         where:
@@ -37,7 +37,7 @@ class FizzBuzzSpec extends Specification {
 
     def "test output for values 1 to 100"() {
         when: "get up to 100"
-            def result = FizzBuzz.print(100);
+            def result = new FizzBuzz().print(100);
         then:
             result == """1
 2
