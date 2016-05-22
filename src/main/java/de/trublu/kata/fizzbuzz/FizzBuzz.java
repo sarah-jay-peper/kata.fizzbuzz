@@ -31,7 +31,7 @@ public class FizzBuzz {
 
     public String transform() {
         addFizzIfDivisibleByThreeOrContainsThree();
-        addBuzzIfDivisibleByFive();
+        addBuzzIfDivisibleByFiveOrContainsFive();
         addFaceValueIfEmpty();
         return getResult();
     }
@@ -46,8 +46,8 @@ public class FizzBuzz {
         if (number.isDivisibleByThree() || number.containsThree()) result += FIZZ;
     }
 
-    private void addBuzzIfDivisibleByFive() {
-        if (number.isDivisibleByFive()) result += "Buzz";
+    private void addBuzzIfDivisibleByFiveOrContainsFive() {
+        if (number.isDivisibleByFive() || number.containsFive()) result += "Buzz";
     }
 }
 
@@ -56,6 +56,8 @@ class FizzBuzzNumber {
     final int number;
 
     boolean containsThree() {return String.valueOf(number).contains("3");}
+
+    boolean containsFive() {return String.valueOf(number).contains("5");}
 
     boolean isDivisibleByFive() {return isDivisibleBy(5, number);}
 
