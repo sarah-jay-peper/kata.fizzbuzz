@@ -13,6 +13,8 @@ public class FizzBuzz {
 
     private static final String FIZZ = "Fizz";
 
+    private static final String BUZZ = "Buzz";
+
     private final FizzBuzzNumber number;
 
     private String result = "";
@@ -47,7 +49,7 @@ public class FizzBuzz {
     }
 
     private void addBuzzIfDivisibleByFiveOrContainsFive() {
-        if (number.isDivisibleByFive() || number.containsFive()) result += "Buzz";
+        if (number.isDivisibleByFive() || number.containsFive()) result += BUZZ;
     }
 }
 
@@ -55,13 +57,17 @@ public class FizzBuzz {
 class FizzBuzzNumber {
     final int number;
 
-    boolean containsThree() {return String.valueOf(number).contains("3");}
+    boolean containsThree() {return containsNumeral(3, number);}
 
-    boolean containsFive() {return String.valueOf(number).contains("5");}
+    boolean containsFive() {return containsNumeral(5, number);}
 
     boolean isDivisibleByFive() {return isDivisibleBy(5, number);}
 
     boolean isDivisibleByThree() {return isDivisibleBy(3, number);}
+
+    private static boolean containsNumeral(int numeral, int number) {
+        return String.valueOf(number).contains(String.valueOf(numeral));
+    }
 
     private static boolean isDivisibleBy(int divisor, int input) {return input % divisor == 0;}
 
