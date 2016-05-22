@@ -7,16 +7,19 @@ import lombok.RequiredArgsConstructor;
 import java.util.stream.IntStream;
 
 @Getter
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class FizzBuzz {
 
     private static final String NEWLINE = "\n";
 
     private static final String FIZZ = "Fizz";
 
-    private final int number;
+    private final FizzBuzzNumber number;
 
     private String result = "";
+
+    public FizzBuzz(int number) {
+        this.number = new FizzBuzzNumber(number);
+    }
 
     public static String print(int max) {
         return IntStream.rangeClosed(1, max)
@@ -36,22 +39,31 @@ public class FizzBuzz {
     private static String reduceOutput(String result, String current) {return result + NEWLINE + current;}
 
     private void addFaceValueIfEmpty() {
-        if (result.isEmpty()) result = String.valueOf(number);
+        if (result.isEmpty()) result = number.toString();
     }
 
     private void addFizzIfDivisibleByThreeOrContainsThree() {
-        if (isDivisibleByThree(number) || containsThree(number)) result += FIZZ;
+        if (number.isDivisibleByThree() || number.containsThree()) result += FIZZ;
     }
 
     private void addBuzzIfDivisibleByFive() {
-        if (isDivisibleByFive(number)) result += "Buzz";
+        if (number.isDivisibleByFive()) result += "Buzz";
     }
+}
 
-    private boolean containsThree(int number) {return String.valueOf(number).contains("3");}
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
+class FizzBuzzNumber {
+    final int number;
 
-    private static boolean isDivisibleByFive(int input) {return isDivisibleBy(5, input);}
+    boolean containsThree() {return String.valueOf(number).contains("3");}
 
-    private static boolean isDivisibleByThree(int input) {return isDivisibleBy(3, input);}
+    boolean isDivisibleByFive() {return isDivisibleBy(5, number);}
+
+    boolean isDivisibleByThree() {return isDivisibleBy(3, number);}
 
     private static boolean isDivisibleBy(int divisor, int input) {return input % divisor == 0;}
+
+    public String toString() {
+        return String.valueOf(number);
+    }
 }
