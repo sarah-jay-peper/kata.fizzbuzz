@@ -25,7 +25,7 @@ public class FizzBuzz {
     }
 
     public String transform() {
-        addFizzIfDivisibleByThree();
+        addFizzIfDivisibleByThreeOrContainsThree();
         addBuzzIfDivisibleByFive();
         addFaceValueIfEmpty();
         return getResult();
@@ -37,8 +37,9 @@ public class FizzBuzz {
         if (result.isEmpty()) result = String.valueOf(number);
     }
 
-    private void addFizzIfDivisibleByThree() {
+    private void addFizzIfDivisibleByThreeOrContainsThree() {
         if (isDivisibleByThree(number)) result += "Fizz";
+        else if (String.valueOf(number).contains("3")) result += "Fizz";
     }
 
     private void addBuzzIfDivisibleByFive() {
