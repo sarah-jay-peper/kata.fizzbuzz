@@ -12,6 +12,8 @@ public class FizzBuzz {
 
     private static final String NEWLINE = "\n";
 
+    private static final String FIZZ = "Fizz";
+
     private final int number;
 
     private String result = "";
@@ -38,13 +40,14 @@ public class FizzBuzz {
     }
 
     private void addFizzIfDivisibleByThreeOrContainsThree() {
-        if (isDivisibleByThree(number)) result += "Fizz";
-        else if (String.valueOf(number).contains("3")) result += "Fizz";
+        if (isDivisibleByThree(number) || containsThree(number)) result += FIZZ;
     }
 
     private void addBuzzIfDivisibleByFive() {
         if (isDivisibleByFive(number)) result += "Buzz";
     }
+
+    private boolean containsThree(int number) {return String.valueOf(number).contains("3");}
 
     private static boolean isDivisibleByFive(int input) {return isDivisibleBy(5, input);}
 
