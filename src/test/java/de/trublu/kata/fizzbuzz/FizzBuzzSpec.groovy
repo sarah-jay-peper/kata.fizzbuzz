@@ -7,8 +7,10 @@ class FizzBuzzSpec extends Specification {
 
     @Unroll
     def "test input #testName"() {
+        given: "a FizzBuzz number"
+            def fizzBuzzNumber = new FizzBuzzNumber(number);
         when: "input"
-            def output = new FizzBuzz(number).transform();
+            def output = FizzBuzz.transform(fizzBuzzNumber);
         then:
             output == expectedOutput
         where:
