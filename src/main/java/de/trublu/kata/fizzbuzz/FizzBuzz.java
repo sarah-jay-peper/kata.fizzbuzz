@@ -6,21 +6,16 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.stream.IntStream;
 
-@Getter
 public class FizzBuzz {
 
     private static final String NEWLINE = "\n";
 
-    private static final String FIZZ = "Fizz";
 
-    private static final String BUZZ = "Buzz";
-
-    private final FizzBuzzNumber number;
-
-    private String result = "";
+    @Getter
+    private FizzBuzzResult result;
 
     public FizzBuzz(int number) {
-        this.number = new FizzBuzzNumber(number);
+        result = new FizzBuzzResult(number);
     }
 
     public static String print(int max) {
@@ -32,30 +27,19 @@ public class FizzBuzz {
     }
 
     public String transform() {
-        addFizzIfDivisibleByThreeOrContainsThree();
-        addBuzzIfDivisibleByFiveOrContainsFive();
-        addFaceValueIfEmpty();
-        return getResult();
+        return result.addFizzIfDivisibleByThreeOrContainsThree()
+                .addBuzzIfDivisibleByFiveOrContainsFive()
+                .addFaceValueIfEmpty()
+                .toString();
     }
 
     private static String reduceOutput(String result, String current) {return result + NEWLINE + current;}
 
-    private void addFaceValueIfEmpty() {
-        if (result.isEmpty()) result = number.toString();
-    }
-
-    private void addFizzIfDivisibleByThreeOrContainsThree() {
-        if (number.isDivisibleByThree() || number.containsThree()) result += FIZZ;
-    }
-
-    private void addBuzzIfDivisibleByFiveOrContainsFive() {
-        if (number.isDivisibleByFive() || number.containsFive()) result += BUZZ;
-    }
 }
 
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class FizzBuzzNumber {
-    final int number;
+    private final int number;
 
     boolean containsThree() {return containsNumeral(3, number);}
 
@@ -74,4 +58,41 @@ class FizzBuzzNumber {
     public String toString() {
         return String.valueOf(number);
     }
+}
+
+class FizzBuzzResult {
+
+    private static final String FIZZ = "Fizz";
+
+    private static final String BUZZ = "Buzz";
+
+    private String result = "";
+
+    private final FizzBuzzNumber number;
+
+    FizzBuzzResult(int number) {
+        this.number = new FizzBuzzNumber(number);
+        result = "";
+    }
+
+    FizzBuzzResult addFaceValueIfEmpty() {
+        if (result.isEmpty()) set(number.toString());
+        return this;
+    }
+
+    FizzBuzzResult addFizzIfDivisibleByThreeOrContainsThree() {
+        if (number.isDivisibleByThree() || number.containsThree()) add(FIZZ);
+        return this;
+    }
+
+    FizzBuzzResult addBuzzIfDivisibleByFiveOrContainsFive() {
+        if (number.isDivisibleByFive() || number.containsFive()) add(BUZZ);
+        return this;
+    }
+
+    public String toString() {return result;}
+
+    private void set(String input) { result = input;}
+
+    private void add(String input) {result += input;}
 }
