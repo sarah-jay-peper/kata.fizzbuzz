@@ -8,23 +8,25 @@
     <artifactId>fizzbuzz</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <groovy.version>2.4.5</groovy.version>
+        <java.version>1.8</java.version>
+        <groovy.version>2.4.7</groovy.version>
         <groovy-eclipse-compiler.version>2.9.2-01</groovy-eclipse-compiler.version>
         <groovy-eclipse-batch.version>2.4.3-01</groovy-eclipse-batch.version>
+        <maven-compiler-version>3.5.1</maven-compiler-version>
         <spock.version>1.0-groovy-2.4</spock.version>
-        <lombok.version>1.16.6</lombok.version>
+        <lombok.version>1.16.8</lombok.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.6</version>
+            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
@@ -55,10 +57,10 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <!-- 2.8.0-01 and later require maven-compiler-plugin 3.1 or higher -->
-                <version>3.1</version>
+                <version>${maven-compiler-version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <compilerId>groovy-eclipse-compiler</compilerId>
                     <verbose>false</verbose>
                     <compilerArguments>
@@ -88,7 +90,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.5.201505241946</version>
+                <version>0.7.7.201606060606</version>
                 <executions>
                     <execution>
                         <goals>
