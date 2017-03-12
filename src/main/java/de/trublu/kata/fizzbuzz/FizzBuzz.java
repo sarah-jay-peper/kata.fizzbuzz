@@ -61,12 +61,15 @@ class FizzBuzzNumber {
     }
 
     FizzBuzzNumber addFizzIfDivisibleByThreeOrContainsThree() {
-        if (input.isDivisibleBy(3) || input.contains(3)) add(FIZZ);
-        return this;
+        return addStringIfDivisibleByOrContainsNumeral(FIZZ, 3);
     }
 
     FizzBuzzNumber addBuzzIfDivisibleByFiveOrContainsFive() {
-        if (input.isDivisibleBy(5) || input.contains(5)) add(BUZZ);
+        return addStringIfDivisibleByOrContainsNumeral(BUZZ, 5);
+    }
+
+    FizzBuzzNumber addStringIfDivisibleByOrContainsNumeral(String name, int numeral) {
+        if (input.isDivisibleBy(numeral) || input.contains(numeral)) add(name);
         return this;
     }
 
