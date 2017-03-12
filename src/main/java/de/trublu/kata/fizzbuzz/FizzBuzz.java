@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import java.util.stream.IntStream;
 
 public final class FizzBuzz {
-
     private static final String NEWLINE = "\n";
 
     public String print(int max) {
@@ -32,19 +31,11 @@ public final class FizzBuzz {
 class FizzBuzzInput {
     private final int number;
 
-    boolean containsThree() {return containsNumeral(3, number);}
-
-    boolean containsFive() {return containsNumeral(5, number);}
-
-    boolean isDivisibleByFive() {return isDivisibleBy(5, number);}
-
-    boolean isDivisibleByThree() {return isDivisibleBy(3, number);}
-
-    private static boolean containsNumeral(int numeral, int number) {
+    boolean contains(int numeral) {
         return String.valueOf(number).contains(String.valueOf(numeral));
     }
 
-    private static boolean isDivisibleBy(int divisor, int input) {return input % divisor == 0;}
+    boolean isDivisibleBy(int divisor) {return number % divisor == 0;}
 
     public String toString() {
         return String.valueOf(number);
@@ -52,9 +43,7 @@ class FizzBuzzInput {
 }
 
 class FizzBuzzNumber {
-
     private static final String FIZZ = "Fizz";
-
     private static final String BUZZ = "Buzz";
 
     private String result = "";
@@ -72,12 +61,12 @@ class FizzBuzzNumber {
     }
 
     FizzBuzzNumber addFizzIfDivisibleByThreeOrContainsThree() {
-        if (input.isDivisibleByThree() || input.containsThree()) add(FIZZ);
+        if (input.isDivisibleBy(3) || input.contains(3)) add(FIZZ);
         return this;
     }
 
     FizzBuzzNumber addBuzzIfDivisibleByFiveOrContainsFive() {
-        if (input.isDivisibleByFive() || input.containsFive()) add(BUZZ);
+        if (input.isDivisibleBy(5) || input.contains(5)) add(BUZZ);
         return this;
     }
 
